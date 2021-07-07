@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
-<!-- html5up.net | @ajlkn Free for personal and commercial use under the CCA 3.0 license -->
+<!-- JPX Adops Testing -->
 
 <!-- 
 	
 o
  \_/\o
 ( Oo)                    \|/
-(_=-)  .===O-  ~~Z~A~P~~ -O-
+(_=-)  .===O-  ~~ZIPZAP~~ -O-
 /   \_/U'                /|\
 ||  |_/
 \\  |
@@ -16,6 +16,7 @@ o
  (__\\
 
 -->
+
 <html>
 	<head>
 		<title>JPX Adops</title>
@@ -24,115 +25,22 @@ o
 		<link rel="stylesheet" href="../assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 		
-		<!-- Prebid Core wrapper head section (demo) -->
+		<!-- Prebid wrapper will go here, after the opening <head> element and main metadata but before the closing </head> tag -->
 
- 		<script async src="//www.googletagservices.com/tag/js/gpt.js"></script>
-        <script async src="../prebidjs/prebid2.26.0.js"></script>
-        <script>
-            var div_1_sizes = [
-                [300, 250]
-            ];
-            var div_2_sizes = [
-                [728, 90],
-                [970, 250],
-                [300, 250],
-                [600, 300]
-            ];
-            var PREBID_TIMEOUT = 1000;
-            var FAILSAFE_TIMEOUT = 3000;
+		<!-- Some pointers: 
 
-            var adUnits = [
-                {
-                    code: '/21697839273/JPX_Testpages_Prebid/JPX_Testpages_Prebid_300x250',
-                    mediaTypes: {
-                        banner: {
-                            sizes: div_1_sizes
-                        }
-                    },
-                    bids:   [{
-                    bidder: 'appnexus',
-                    params: {
-                        placementId: 13144370
-                    }
-                },
-                {
-                    bidder: 'justpremium',
-          			params: {
-              		zone: 61543,
-              		allow: ["wp","pd","cf","pa","ca","mt","mo"]
-                    }
-                }]   
-                },
-                {
-                    code: '/21697839273/JPX_Testpages_Prebid/JPX_Testpages_Prebid_300x600',
-                    mediaTypes: {
-                        banner: {
-                            sizes: div_2_sizes
-                        }
-                    },
-                    bids: [{
-                        bidder: 'appnexus',
-                    params: {
-                        placementId: 13144370
-                    }
-                },
-                {
-                    bidder: 'justpremium',
-          			params: {
-              		zone: 61543,
-              		allow: ["pu","as","fi","hi","sa","ms","is"]
-                    }
-                }]   
-                }
-            ];
+  		---- The //acdn.adnxs.com/prebid/not-for-prod/prebid.js url will be replaced with a link referring to your own prebid.js file
+		---- In order to do that, we need to upload that js file here to the github repository (I can help with that, of course) and find the correct path
+ 		---- The ad unit you create on GAM will be replacing the one (/19968336/header-bid-tag-1) on the prebid demo code
+ 		---- You can adjust the size of your ad unit by changing the values under var sizes 
+		---- The JustPremium adapter needs to be added as a bidder alongside the existing Appnexus demo bidder, so they compete with each other
+		---- You can get the adapter from the JP platform, either by creating a new zone ID or using an existing one (there are a couple of test zone IDs already there, just search for "adops") 
 
-            // ======== DO NOT EDIT BELOW THIS LINE =========== //
-            var googletag = googletag || {};
-            googletag.cmd = googletag.cmd || [];
-            googletag.cmd.push(function() {
-                googletag.pubads().disableInitialLoad();
-            });
+		-->
+		
+ 		<!-- YOUR CODE HERE -->
 
-            var pbjs = pbjs || {};
-            pbjs.que = pbjs.que || [];
-
-            pbjs.que.push(function() {
-                pbjs.addAdUnits(adUnits);
-                pbjs.requestBids({
-                    bidsBackHandler: initAdserver,
-                    timeout: PREBID_TIMEOUT
-                });
-            });
-
-            function initAdserver() {
-                if (pbjs.initAdserverSet) return;
-                pbjs.initAdserverSet = true;
-                googletag.cmd.push(function() {
-                    pbjs.que.push(function() {
-                        pbjs.setTargetingForGPTAsync();
-                        googletag.pubads().refresh();
-                    });
-                });
-            }
-            // in case PBJS doesn't load
-            setTimeout(function() {
-                initAdserver();
-            }, FAILSAFE_TIMEOUT);
-
-            googletag.cmd.push(function() {
-                googletag.defineSlot('/21697839273/JPX_Testpages_Prebid/JPX_Testpages_Prebid_300x250', div_1_sizes, 'div-1').addService(googletag.pubads());
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-            googletag.cmd.push(function() {
-                googletag.defineSlot('/21697839273/JPX_Testpages_Prebid/JPX_Testpages_Prebid_300x600', div_2_sizes, 'div-2').addService(googletag.pubads());
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });
-
-        </script>
-
-		<!-- End wrapper  -->
+		<!-- End Prebid wrapper  -->
 
 	</head>
 	
@@ -140,16 +48,6 @@ o
 
 		<!-- Wrapper -->
 			<div id="wrapper" class="fade-in">
-
-				<!-- Intro
-					<div id="intro">
-						<h1>This is<br />
-						A testpage</h1>
-						<p>./p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div> -->
 
 				<!-- Header -->
 					<header id="header">
@@ -180,34 +78,20 @@ o
 									<span class="date">April 25, 2019</span>
 									<h2><a href="#">And this is a<br />
 									test page</a></h2>
-									<p>Testing Prebid Core Wrapper - v6<br />
-									"wp","pd","cf","pa","ca","mt","mo" &amp; "pu","as","fi","hi","sa","ms","is" / Zone ID 61543 DK &amp; Zone ID 61543 MB<br />
-									Header Bidding - Prebid Demo DFP Ad Unit / JPx2 + AppNexus</p>
+									
+									<p>Messing with Prebid.js - Sul's Page<br />
+									Formats TBD / Zone ID TBD<br />
+									Header Bidding - Justpremium vs AppNexus</p>
 									</header>
-	<!-- Ad tag body section -->
- 	<h5>Div-1 - header units</h5>
-        <div id='div-1'>
-            <script type='text/javascript'>
-                googletag.cmd.push(function() {
-                    googletag.display('div-1');
-                });
-
-            </script>
-        </div>
-
-        <br>
-
-        <h5>Div-2 - footer units</h5>
-        <div id='div-2'>
-            <script type='text/javascript'>
-                googletag.cmd.push(function() {
-                    googletag.display('div-2');
-                });
-
-            </script>
-        </div>
-
-	<!-- End ad Tag -->
+								
+ 	<h5>Ad Unit Here:</h5>
+								
+	<!-- The body tag of your GPT can go here
+ 	---- you can generate this from GAM following the usual process, you just use only the second half -->
+								
+        <!-- YOUR CODE HERE -->
+								
+	<!-- End GPT body tag -->
 
 					<a href="#" class="image main"><img src="../images/pic01.jpg" alt="" /></a>
 								<ul class="actions special">
